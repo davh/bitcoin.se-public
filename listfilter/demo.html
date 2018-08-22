@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        .category {
+            visibility: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <div data-w-id="3d077f96-7a72-3c77-2c42-3a0849a66fec" style="opacity: 1; transform: translateX(0px) translateY(0px) translateZ(0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);" class="wallet-filter-wrapper w-form">
+        <form class="wallet-filter-form">
+            <div class="wallet-filter-col categorygroup">
+                <div class="wallet-filter-heading"><span class="yellow-filter-icons"></span>Plattformar</div><div class="right-border-dotted w-embed">
+                    <label><input type="checkbox" name="category-platform-web" checked=""><span class="light-icons"></span>Web</label>
+                    <label><input type="checkbox" name="category-platform-android" checked=""><span class="brand-icons"></span>Android</label>
+                    <label><input type="checkbox" name="category-platform-ios" checked=""><span class="brand-icons"></span>iOS</label>
+                    <label><input type="checkbox" name="category-platform-linux" checked=""><span class="brand-icons"></span>Linux</label>
+                    <label><input type="checkbox" name="category-platform-windows" checked=""><span class="brand-icons"></span>Windows</label>
+                    <label><input type="checkbox" name="category-platform-macos" checked=""><span class="brand-icons"></span> MacOS</label>
+                </div>
+            </div><div class="wallet-filter-col categorygroup">
+                <div class="wallet-filter-heading"><span class="yellow-filter-icons"></span>Privata nycklar</div><div class="right-border-dotted w-embed">
+                    <label><input type="checkbox" name="category-pk-own" checked=""><span>Kontrolleras av dig</span></label>
+                    <label><input type="checkbox" name="category-pk-encrypted" checked=""><span>Krypterat hos tredjepart</span></label>
+                    <label><input type="checkbox" name="category-pk-3rdparty" checked=""><span>Hanteras av tredjepart</span></label>
+                </div>
+            </div><div class="wallet-filter-col categorygroup">
+                <div class="wallet-filter-heading"><span class="yellow-filter-icons"></span>Öppen källkod</div><div class="right-border-dotted w-embed">
+                    <label><input type="checkbox" name="category-opensource-yes" checked=""><span>Ja</span></label>
+                    <label><input type="checkbox" name="category-opensource-no" checked=""><span>Nej</span></label>
+                </div>
+            </div><div class="wallet-filter-col categorygroup">
+                <div class="wallet-filter-heading"><span class="yellow-filter-icons"></span>Lightning network</div><div class="w-embed">
+                    <label><input type="checkbox" name="category-lightning-yes" checked=""><span>Ja</span></label>
+                    <label><input type="checkbox" name="category-lightning-no" checked=""><span>Nej</span></label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <hr />
+
+    <div class="wallets-collection-wrapper w-dyn-list">
+        <div class="wallet-collection-list w-dyn-items">
+            <div class="wallet-item category-platform-ios category-platform-android category-pk-encrypted category-opensource-no category-lightning-no">
+                iOS / Android | Krypterat hos tredjepart | OpenSource NEJ | Lightning NEJ
+            </div>
+            <div class="wallet-item category-platform-web category-platform-linux category-pk-own category-opensource-yes category-lightning-no">
+                Web / Linux | Kontrolleras av dig | OpenSource JA | Lightning NEJ
+            </div>
+            <div class="wallet-item category-platform-windows category-platform-macos category-pk-3rdparty category-opensource-yes category-lightning-yes">
+                Windows / MacOS | Hanteras av tredjepart | OpenSource JA | Lightning JA
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./listfilter.js"></script>
+
+</body>
+</html>
