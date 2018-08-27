@@ -16,12 +16,12 @@ $.get("https://forum.bitcoin.se/categories.json", function (categoryData) {
         $(".forum-list-wrapper").children("a").each(function () {
             var forumItem = data.topic_list.topics[i];
             $(this).prop("href", topicUrl + forumItem.slug);
-            $(this).children(".forum-item-date").html(formatPostDate(forumItem.bumped_at));
-            $(this).children(".forum-item-topic").html(forumItem.title);
-            $(this).children(".forum-item-category").html(categories[forumItem.category_id]);
-            $(this).children(".forum-item-user").html(forumItem.last_poster_username);
-            $(this).children(".forum-item-views").html(forumItem.views);
-            $(this).children(".forum-item-replies").html(forumItem.posts_count - 1);
+            $(this).find(".forum-item-date").html(formatPostDate(forumItem.bumped_at));
+            $(this).find(".forum-item-topic").html(forumItem.title);
+            $(this).find(".forum-item-category").html(categories[forumItem.category_id]);
+            $(this).find(".forum-item-user").html(forumItem.last_poster_username);
+            $(this).find(".forum-item-views").html(forumItem.views);
+            $(this).find(".forum-item-replies").html(forumItem.posts_count - 1);
 
             i++;
         });;
