@@ -3,8 +3,8 @@ $('.btc-price').html(latestBitcoinPrice);
 
 var oldPrice = 0;
 // https://stackoverflow.com/questions/3139879/how-do-i-get-currency-exchange-rates-via-an-api-such-as-google-finance
-$.get("http://free.currencyconverterapi.com/api/v3/convert?q=USD_SEK&compact=ultra", function (data) {
-    var sekUsdConversionRate = data.USD_SEK;
+$.get("https://currencyrate.azurewebsites.net/api/GetRate?currencyPair=USDSEK&nrOfItems=0&resolution=hour", function (data) {
+    var sekUsdConversionRate = data.rates[0].rate;
 
     $.get("https://www.bitstamp.net/api/ticker", function (data) {
 
