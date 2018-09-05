@@ -1,10 +1,17 @@
 ﻿// Hack for allowing filtering of lists. Find categories in text fields and add as classes
-$('.wallet-collection-list .w-dyn-item .category:not(.w-condition-invisible)').each(function () {
-    var categoryName = $(this).text();
-    $(this).parent().parent().addClass(categoryName);
+
+$('input[type="checkbox"]').click(updateList);
+
+$(document).ready(function () {
+    $('.wallet-collection-list .w-dyn-item .category:not(.w-condition-invisible)').each(function () {
+        var categoryName = $(this).text();
+        $(this).parent().parent().addClass(categoryName);
+    });
+
+    updateList();
 });
 
-$('input[type="checkbox"]').click(function () {
+function updateList() {
     $('.wallet-item').addClass('visible-in-total');
 
     $('.categorygroup').each(function () {
@@ -18,4 +25,4 @@ $('input[type="checkbox"]').click(function () {
 
     $('.wallet-item').hide();
     $('.visible-in-total').fadeIn();
-});
+}
