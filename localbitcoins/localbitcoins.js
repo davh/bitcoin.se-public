@@ -90,7 +90,9 @@ var paymentMethods = {
     PAYTM: "PayTM"
 };
 
-var topicUrl = "https://forum.bitcoin.se/t/";
+function formatNumber(number) {
+    return new Intl.NumberFormat('en-IN').format(number);
+};
 
 if ($(".localbitcoins-list-wrapper").length) {
     $.get("http://ip-api.com/json", function (location) {
@@ -101,14 +103,14 @@ if ($(".localbitcoins-list-wrapper").length) {
                 var i = 0;
             $(".localbitcoins-list-wrapper").children("a").each(function () {
                 var item = data.data.ad_list[i];
-                $(this).prop("href", item.actions.public_view);
+                $(this).prop("href", item.actions.public_view + "?ch=39vp");
                 $(this).find(".localbitcoins-item-user").html(item.data.profile.username);
-                $(this).find(".localbitcoins-item-price").html(item.data.temp_price);
+                $(this).find(".localbitcoins-item-price").html(formatNumber(item.data.temp_price));
                 $(this).find(".localbitcoins-item-currency").html(item.data.currency);
                 $(this).find(".localbitcoins-item-paymentmethod").html(paymentMethods[item.data.online_provider]);
                 $(this).find(".localbitcoins-item-feedbackscore").html(item.data.profile.feedback_score);
-                $(this).find(".localbitcoins-item-minamount").html(item.data.min_amount);
-                $(this).find(".localbitcoins-item-maxamount").html(item.data.max_amount_available);
+                $(this).find(".localbitcoins-item-minamount").html(formatNumber(item.data.min_amount));
+                $(this).find(".localbitcoins-item-maxamount").html(formatNumber(item.data.max_amount_available));
                 $(this).find(".localbitcoins-item-currency2").html(item.data.currency);
                 i++;
             });;
