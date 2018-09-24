@@ -95,7 +95,7 @@ function formatNumber(number) {
 };
 
 if ($(".localbitcoins-list-wrapper").length) {
-    $.get("http://ip-api.com/json", function (location) {
+    $.get("https://extreme-ip-lookup.com/json/", function (location) {
 
         var url = "https://cors-anywhere.herokuapp.com/localbitcoins.com/buy-bitcoins-online/" + location.countryCode + "/" + location.country + "/.json";
 
