@@ -97,11 +97,15 @@ function formatNumber(number) {
 if ($(".localbitcoins-list-wrapper").length) {
     $.get("https://extreme-ip-lookup.com/json/", function (location) {
 
-        var url = "https://cors-anywhere.herokuapp.com/localbitcoins.com/buy-bitcoins-online/" + location.countryCode + "/" + location.country + "/.json";
+        var url = "https://localbitcoins.com/buy-bitcoins-online/" + location.countryCode + "/" + location.country + "/";
+        var jsonurl = "https://cors-anywhere.herokuapp.com/localbitcoins.com/buy-bitcoins-online/" + location.countryCode + "/" + location.country + "/.json";
 
-        $.get(url, function (data) {
-                var i = 0;
-            $(".localbitcoins-list-wrapper").children("a").each(function () {
+        $(".localbitcoins-list-wrapper").find(".se-mer-link").contents()[0].data = "More offers in " + location.country + " and world wide";
+        $(".localbitcoins-list-wrapper").find(".se-mer-link").prop("href", url);
+
+        $.get(jsonurl, function (data) {
+            var i = 0;
+            $(".localbitcoins-list-wrapper").children("a.localbitcoins-list-item").each(function () {
                 var item = data.data.ad_list[i];
                 $(this).prop("href", item.actions.public_view + "?ch=39vp");
                 $(this).find(".localbitcoins-item-user").html(item.data.profile.username);
