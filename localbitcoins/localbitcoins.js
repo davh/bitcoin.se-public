@@ -99,7 +99,7 @@ if ($(".localbitcoins-list-wrapper").length) {
 
         var affiliateSuffix = "?ch=39vp";
         var url = "https://localbitcoins.com/buy-bitcoins-online/" + location.countryCode + "/" + location.country + "/";
-        var jsonurl = "https://cors-anywhere.herokuapp.com/localbitcoins.com/buy-bitcoins-online/" + location.countryCode + "/" + location.country + "/.json";
+        var jsonurl = "https://caproxy.azurewebsites.net/api/LocalBitcoins?countryCode=" + location.countryCode + "&country=" + location.country;
 
         $(".localbitcoins-list-wrapper").find(".se-mer-link").contents()[0].data = "More offers in " + location.country + " and world wide";
         $(".localbitcoins-list-wrapper").find(".se-mer-link").prop("href", url + affiliateSuffix);
