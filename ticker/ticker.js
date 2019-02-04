@@ -24,7 +24,7 @@ function updateTicker(price) {
     oldPrice = price;
     var formattedPrice = formatPrice(Math.round(price));
     $('.btc-price').html(formattedPrice);
-    $('.updated-time').html(formatDate(new Date));
+    $('.updated-time').html(formatTickerDate(new Date));
 
     localStorage.setItem('latestBitcoinPrice', formattedPrice);
 }
@@ -36,7 +36,7 @@ function formatPrice(x) {
     return n[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ") + (n.length > 1 ? "." + n[1] : "");
 }
 
-function formatDate(date) {
+function formatTickerDate(date) {
     var date = date.getHours() + ":" + date.getMinutes();
     return date;
 }
