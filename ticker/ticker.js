@@ -2,19 +2,25 @@
 $('.btc-price').html(latestBitcoinPrice);
 
 var oldPrice = 0;
-// https://stackoverflow.com/questions/3139879/how-do-i-get-currency-exchange-rates-via-an-api-such-as-google-finance
-$.get("https://currencyrate.azurewebsites.net/api/GetRate?currencyPair=USDSEK&nrOfItems=1&resolution=hour", function (data) {
-    var sekUsdConversionRate = data.rates[0].rate;
+$.get("https://currencyrate.azurewebsites.net/api/GetRate?currencyPair=EURSEK&nrOfItems=1&resolution=hour", function (data) {
+    var sekEurConversionRate = data.rates[0].rate;
 
-    $.get("https://www.bitstamp.net/api/ticker", function (data) {
+    $.get("https://currencyrate.azurewebsites.net/api/GetRate?currencyPair=BTCEUR&nrOfItems=1&resolution=hour", function (data) {
 
-        updateTicker(data.last * sekUsdConversionRate);
+        updateTicker(data.rates[0].rate * sekEurConversionRate);
 
-        var pusher = new Pusher('de504dc5763aeef9ff52');
-        var tradesChannel = pusher.subscribe('live_trades');
-        tradesChannel.bind('trade', function (data) {
-            updateTicker(data.price * sekUsdConversionRate);
-        });
+        var ws = new WebSocket('wss://ws.bitstamp.net');
+        ws.onopen = () => {
+            ws.send('{"event": "bts:subscribe","data": { "channel": "live_trades_btceur" }}');
+        };
+        
+        ws.onmessage = (e) => {
+            var data = JSON.parse(e.data);
+            if (data.event != 'trade')
+                return;
+     
+            updateTicker(data.data.price * sekEurConversionRate);
+        };        
     });
 });
 

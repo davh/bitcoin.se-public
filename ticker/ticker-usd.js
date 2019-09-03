@@ -2,15 +2,21 @@
 $('.btc-price').html(latestBitcoinPrice);
 
 var oldPrice = 0;
-$.get("https://www.bitstamp.net/api/ticker", function (data) {
+$.get("https://currencyrate.azurewebsites.net/api/GetRate?currencyPair=BTCUSD&nrOfItems=1&resolution=hour", function (data) {
+    updateTicker(data.rates[0].rate);
 
-    updateTicker(data.last);
-
-    var pusher = new Pusher('de504dc5763aeef9ff52');
-    var tradesChannel = pusher.subscribe('live_trades');
-    tradesChannel.bind('trade', function (data) {
-        updateTicker(data.price);
-    });
+    var ws = new WebSocket('wss://ws.bitstamp.net');
+    ws.onopen = () => {
+        ws.send('{"event": "bts:subscribe","data": { "channel": "live_trades_btcusd" }}');
+    };
+    
+    ws.onmessage = (e) => {
+        var data = JSON.parse(e.data);
+        if (data.event != 'trade')
+            return;
+ 
+        updateTicker(data.data.price);
+    };   
 });
 
 function updateTicker(price) {
