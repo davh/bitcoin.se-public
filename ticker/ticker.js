@@ -5,9 +5,9 @@ var oldPrice = 0;
 $.get("https://currencyrate.azurewebsites.net/api/GetRate?currencyPair=EURSEK&nrOfItems=1&resolution=hour", function (data) {
     var sekEurConversionRate = data.rates[0].rate;
 
-    $.get("https://currencyrate.azurewebsites.net/api/GetRate?currencyPair=BTCEUR&nrOfItems=1&resolution=hour", function (data) {
+    $.get("https://simpleproxies.azurewebsites.net/btceur", function (data) {
 
-        updateTicker(data.rates[0].rate * sekEurConversionRate);
+        updateTicker(data.last * sekEurConversionRate);
 
         var ws = new WebSocket('wss://ws.bitstamp.net');
         ws.onopen = () => {

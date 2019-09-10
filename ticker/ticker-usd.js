@@ -2,8 +2,8 @@
 $('.btc-price').html(latestBitcoinPrice);
 
 var oldPrice = 0;
-$.get("https://currencyrate.azurewebsites.net/api/GetRate?currencyPair=BTCUSD&nrOfItems=1&resolution=hour", function (data) {
-    updateTicker(data.rates[0].rate);
+$.get("https://simpleproxies.azurewebsites.net/btcusd", function (data) {
+    updateTicker(data.last);
 
     var ws = new WebSocket('wss://ws.bitstamp.net');
     ws.onopen = () => {
