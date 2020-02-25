@@ -97,7 +97,7 @@ function formatNumber(number) {
 if ($(".localbitcoins-list-wrapper").length) {
     $.get("https://extreme-ip-lookup.com/json/", function (location) {
 
-        var affiliateSuffix = "?ch=39vp";
+        var affiliateSuffix = "?ch=17vo0";
         var url = "https://localbitcoins.com/buy-bitcoins-online/" + location.countryCode + "/" + location.country + "/";
         var jsonurl = "https://simpleproxies.azurewebsites.net/localbitcoins/" + location.countryCode.toLowerCase() + "/" + location.country.toLowerCase();
 
