@@ -91,7 +91,7 @@ var paymentMethods = {
 };
 
 function formatNumber(number) {
-    return new Intl.NumberFormat('en-IN').format(number);
+    return new Intl.NumberFormat('en-US').format(number);
 };
 
 if ($(".localbitcoins-list-wrapper").length) {
