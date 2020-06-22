@@ -95,13 +95,13 @@ function formatNumber(number) {
 };
 
 if ($(".localbitcoins-list-wrapper").length) {
-    $.get("https://extreme-ip-lookup.com/json/", function (location) {
+    $.get("http://api.ipstack.com/check?access_key=7ded3f07b17b936d7cf91ab539ea00c4&format=1", function (location) {
 
         var affiliateSuffix = "?ch=17vo0";
-        var url = "https://localbitcoins.com/buy-bitcoins-online/" + location.countryCode + "/" + location.country + "/";
-        var jsonurl = "https://simpleproxies.azurewebsites.net/localbitcoins/" + location.countryCode.toLowerCase() + "/" + location.country.toLowerCase();
+        var url = "https://localbitcoins.com/buy-bitcoins-online/" + location.country_code + "/" + location.country_name + "/";
+        var jsonurl = "https://simpleproxies.azurewebsites.net/localbitcoins/" + location.country_code.toLowerCase() + "/" + location.country_name.toLowerCase();
 
-        $(".localbitcoins-list-wrapper").find(".se-mer-link").contents()[0].data = "More offers in " + location.country + " and world wide";
+        $(".localbitcoins-list-wrapper").find(".se-mer-link").contents()[0].data = "More offers in " + location.country_name + " and world wide";
         $(".localbitcoins-list-wrapper").find(".se-mer-link").prop("href", url + affiliateSuffix);
 
         $.get(jsonurl, function (data) {
