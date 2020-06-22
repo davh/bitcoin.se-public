@@ -95,7 +95,7 @@ function formatNumber(number) {
 };
 
 if ($(".localbitcoins-list-wrapper").length) {
-    $.get("https://api.ipstack.com/check?access_key=7ded3f07b17b936d7cf91ab539ea00c4&format=1", function (location) {
+    $.get("https://ipapi.co/json", function (location) {
 
         var affiliateSuffix = "?ch=17vo0";
         var url = "https://localbitcoins.com/buy-bitcoins-online/" + location.country_code + "/" + location.country_name + "/";
